@@ -1,0 +1,210 @@
+
+{% extends "layout.html"%}
+
+
+{% block content %}
+<hr>
+<div id="cover-caption">
+    <div class="container">
+        <div class="list-group" >
+          <a href="#" class="list-group-item list-group-item-action active navbar-dark bg-dark" >
+            Vehicle registration {{user[0]}}
+          </a>
+    <hr>
+           <form action="/login/register" class="col-lg-10 offset-lg-1 " method="POST">
+                  <div class="form-row">
+                    <div class="form-check">
+                      <input class="form-check-input is-invalid" type="checkbox" value="" id="ck_individual" aria-describedby="invalidCheck3Feedback">
+                      <label class="form-check-label" for="ck_individual">Individual owner</label>
+                    </div> &nbsp; &nbsp;
+                    <div class="form-check">
+                      <input class="form-check-input is-invalid" type="checkbox" value="" id="ch_entity" aria-describedby="invalidCheck3Feedback">
+                      <label class="form-check-label" for="ch_entity">Entity owner</label>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                      <div class="col-md-2 mb-6">
+                          &nbsp;<label for="fname" class="sr-only" >First name</label>
+                          <input type="text" class="form-control" id="fname" name="fname" placeholder="First name">
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                            <label for="lname" class="sr-only">Last name</label>
+                           <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name">
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                           &nbsp;<label for="id_number" class="sr-only">ID Number</label>
+                           <input type="text" class="form-control" id="id_number" name="id_number" placeholder="ID Number">
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                           &nbsp;<label for="birthday" class="sr-only">Date of brith</label>
+                           <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Date of brith">
+                           <small class="form-text text-muted">Date of brith</small>
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                          &nbsp;<label for="mar_status" class="sr-only">Marital status</label>
+                          <select class="custom-select" id="mar_status" aria-describedby="mar_status" name="mar_status">
+                            <option selected disabled value="">--Marital status--</option>
+                            {% for marital in maritals %}
+                              <option value="{{marital[0]}}">{{marital[1]}}</option>
+                            {% endfor %}
+                          </select>
+                       </div>
+                  </div>
+
+
+                  <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                          &nbsp;<label for="denomination" class="sr-only">Denomination</label>
+                          <input type="text" class="form-control" id="denomination" name="denomination" placeholder="Denomination">
+                        </div>
+
+                        <div class="col-md-2 mb-2">
+                            &nbsp;<label for="regist_num" class="sr-only">Registration Number</label>
+                            <input type="text" class="form-control" id="regist_num" name="regist_num" placeholder="Registration Number">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                           &nbsp;<label for="birthday_date" class="sr-only">Entity Reg. date</label>
+                           <input type="date" class="form-control" id="birthday_date" name="birthday_date" placeholder="Entity Reg. date">
+                            <small class="form-text">Entity Reg. date</small>
+                      </div>
+                  </div>
+
+
+                  <div class="form-row">
+                       <div class="col-md-2 mb-3">
+                          &nbsp;<label for="profession" class="sr-only">Profession</label>
+                          <input type="text" class="form-control" id="profession" name="profession" placeholder="Profession" required>
+
+                       </div>
+                      <div class="col-md-2 mb-3">
+                          &nbsp;<label for="select_province" class="sr-only">Province</label>
+                          <select class="custom-select" id="select_province" name="select_province" aria-describedby="validationServer04Feedback">
+                            <option selected disabled value="">--Province--</option>
+                          </select>
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                          &nbsp;<label for="select_district" class="sr-only">District</label>
+                          <select class="custom-select" id="select_district" name="select_district">
+                            <option selected disabled value="">--District--</option>
+                          </select>
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                          &nbsp;<label for="neighbor" class="sr-only">Neighborhood</label>
+                          <input type="text" class="form-control" id="neighbor" name="neighbor" placeholder="Neighborhood" required>
+                      </div>
+
+                      <div class="col-md-2 mb-3">
+                          &nbsp;<label for="add_details" class="sr-only">Address details</label>
+                          <input type="text" class="form-control" id="add_details" name="add_details" placeholder="Address details" required>
+                      </div>
+                  </div>
+
+    <hr>
+                  <div class="form-row">
+                       <div class="col-md-2 mb-3">
+                          &nbsp;<label for="plate_num" class="sr-only">License Plate Number</label>
+                          <input type="text" class="form-control" id="plate_num" name="plate_num" placeholder="License Plate Number" required>
+                       </div>
+
+                       <div class="col-md-2 mb-3">
+                          &nbsp;<label for="add_details" class="sr-only">Registration date</label>
+                          <input type="date" class="form-control" id="reg_date" name="reg_date" placeholder="Registration date" required>
+                           <small class="form-text">Registration date</small>
+                       </div>
+
+                       <div class="col-md-2 mb-3">
+                              &nbsp;<label for="select_brand" class="sr-only">Brand (all)</label>
+                              <select class="custom-select" id="select_brand" name="select_brand" aria-describedby="validationServer04Feedback">
+                                <option selected disabled value="">-- Brand (all) --</option>
+                              </select>
+                       </div>
+
+                       <div class="col-md-2 mb-3">
+                          &nbsp;<label for="select_model" class="sr-only">Model</label>
+                          <select class="custom-select" id="select_model" name="select_model">
+                            <option selected disabled value="">-- Model --</option>
+                          </select>
+                       </div>
+
+                       <div class="col-md-2 mb-3">
+                          &nbsp;<label for="select_fuel" class="sr-only">Fuel</label>
+                          <select class="custom-select" id="select_fuel" name="select_fuel">
+                            <option selected disabled value="">-- Fuel --</option>
+                              {% for fuel in fuels %}
+                                <option value="{{fuel[0]}}">{{fuel[1]}}</option>
+                              {% endfor %}
+                          </select>
+                       </div>
+
+                  </div>
+
+
+                  <div class="form-row">
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="select_bdtype" class="sr-only">Body type</label>
+                          <select class="custom-select" id="select_bdtype" name="select_bdtype">
+                            <option selected disabled value="">-- Body type --</option>
+                            {% for body in bodytypes %}
+                            <option value="{{body[0]}}">{{body[1]}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="add_details" class="sr-only">Service</label>
+                          <input type="text" class="form-control" id="service" name="service" placeholder="Service" required>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="seat" class="sr-only">Seats</label>
+                          <input type="text" class="form-control" id="seat" name="seat" placeholder="Seats" required>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="chassis" class="sr-only">Chassis</label>
+                          <input type="text" class="form-control" id="chassis" name="chassis" placeholder="Chassis" required>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="engine_size" class="sr-only">Engine size</label>
+                          <input type="text" class="form-control" id="engine_size" name="engine_size" placeholder="Engine Size" required>
+                        </div>
+                  </div>
+
+                  <div class="form-row">
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="cylinder" class="sr-only">Cylinder</label>
+                          <input type="text" class="form-control" id="cylinder" name="cylinder" placeholder="Cylinder" required>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="weight" class="sr-only">Weight</label>
+                          <input type="text" class="form-control" id="weight" name="weight" placeholder="Weight" required>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="color" class="sr-only">Color</label>
+                          <input type="text" class="form-control" id="color" name="color" placeholder="Color" required>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                          &nbsp;<label for="add_details" class="sr-only">Wheel size</label>
+                          <input type="text" class="form-control" id="wheel_size" name="wheel_size" placeholder="Wheel size" required>
+                        </div>
+                  </div>
+                  <button class="btn btn-primary btn-rounded" type="submit">Submit</button>&nbsp;
+                  <a class="btn btn-warning btn-rounded" href="/login/create_tools" type="submit">Cancel</a>
+           </form>
+        </div>
+    </div>
+</div>
+{% endblock%}

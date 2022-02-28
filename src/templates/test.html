@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+
+{% block content%}
+    <form class="form-test" action="/login/test" method="POST">
+        <table>
+            <tr>
+
+                    <div class="form-group col-md-3">
+                          <label for="select_province">Select a Province</label>
+                          <select id="select_province" name="select_province" class="form-control">
+                               <option selected>--Choose--</option>
+<!--                                {% for province in provinces %}-->
+<!--                                    <option value="{{province[0]}}">{{province[2]}}</option>-->
+<!--                                {% endfor %}-->
+                          </select>
+                    </div>
+
+            </tr>
+            <tr>
+                <div class="form-group col-md-3">
+                      <label for="select_district">Select a District</label>
+                      <select id="select_district" name="select_district" class="form-control">
+                            <option selected>--Choose--</option>
+<!--                            {% for district in districts %}-->
+<!--                                <option value="{{district[0]}}">{{district[1]}}</option>-->
+<!--                            {% endfor%}-->
+                      </select>
+                </div>
+
+            </tr>
+            <tr>
+                <div class="form-group col-md-2">
+                <label for="neighbor">Neighborhood</label>
+                <input type="text" class="form-control" id="neighbor" name="neighbor" placeholder="Neighborhood">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="adress">Adress</label>
+                <input type="text" class="form-control" id="adress" name="adress" placeholder="Adress">
+              </div>
+            </tr>
+        </table>
+    </form>
+
+{% endblock %}
+

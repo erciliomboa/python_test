@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+
+<body>
+   {% block content %}
+   {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+    {% endfor %}
+       <br>
+       <h2>HOME PAGE </h2>
+        <a href="/login"  style="display:inline"><button class="btn btn-success float-right" >Login</button> </a>
+       <hr>
+
+       <main role="main">
+           <div class="jumbotron">
+               <div class="col-sm-8 mx-auto">
+                   <h1>Welcome to Mboa`s Blog</h1>
+                   <p>This blog is a quick start to let you know about how thing a move forward in HUST and its work. In hust there many students
+                       for different country living and study in hust campus, others are confidence pass through by the <code>.Assistent</code>. For
+                       and for more information about the life in hust you can visit the link and <a
+                               href="https://www.hust.edu.cn">Hust site</a> examples.</p>
+                   <p>At the smallest breakpoint, the collapse plugin is used to hide the links and show a menu button
+                       to
+                       toggle the collapsed content.</p>
+                   <p>
+                       <a class="btn btn-primary" href="/list_blogs" role="button">View Blogs
+                           &raquo;</a>
+                   </p>
+               </div>
+           </div>
+       </main>
+ <!--  </div>-->
+    {% endblock %}
+</body>

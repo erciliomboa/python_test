@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content%}
+    <div class="container">
+        <br>
+        <h2 style="bold">List of users</h2>
+        <br>
+        <form action="/search" method="GET">
+            <div class="form-row">
+                <div>
+                    <input type="text" class="form-control" id="license" name="license" placeholder="Enter the license plate">
+                </div>
+                <div class="col-md-2 mb-3">
+                     <label for="select_brand" class="sr-only">Brand (all)</label>
+                     <select class="custom-select" id="select_brand" name="select_brand" aria-describedby="validationServer04Feedback">
+                        <option selected disabled value="">-- Brand (all) --</option>
+                     </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                     <label for="select_model" class="sr-only">Model</label>
+                     <select class="custom-select" id="select_model" name="select_model">
+                        <option selected disabled value="">-- Model --</option>
+                     </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">SEARCH</button>
+                </div>
+            </div>
+        </form>
+
+
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">License plt number</th>
+              <th scope="col">Brand</th>
+              <th scope="col">Model</th>
+              <th scope="col">first Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">In favor</th>
+              <th scope="col"></th>
+              <th scope="col">Settings</th>
+            </tr>
+          </thead>
+          <tbody>
+                {% for info in details %}
+                    <tr>
+                      <th scope="row">{{info[0]}}</th>
+                      <td>{{info[1]}}</td>
+                      <td>{{info[2]}}</td>
+                      <td>{{info[3]}}</td>
+                      <td>{{info[4]}}</td>
+                      <td>{{info[5]}}</td>
+                      <td>{{info[6]}}</td>
+                      <td><a href="#" name="edit" id="edit">Edit</a>
+                      &nbsp<a href="#" name="disable" id="disable">Disable</a>
+                      </td>
+                    </tr>
+                {% endfor%}
+          </tbody>
+        </table>
+            <div class="form-check">
+                <br>
+                <a type="submit" class="btn btn-success" href="/login/create_tools" >Done</a>
+                <a type="submit" class="btn btn-info" href="/login/create_tools" >Cancel</a>
+            </div>
+    </div>
+
+{% endblock %}

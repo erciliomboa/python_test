@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+    {% endfor %}
+    <div class="container" align="center" id="cover">
+        <form action="/login" class="form-signin" id="login-form" method="POST">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <div class="field login-page-form">
+                        <!--<label class="label">Username</label>-->
+                        <div class="form-group control has-icons-left has-icons-right">
+                          <input class="input form-control" type="text" id="username" name="username" placeholder="Username" required autofocus>
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                          </span>
+                        </div>
+                </div>
+                <div class="field login-page-form">
+                    <!--<label class="label">Password</label>-->
+                    <p class="form-group control has-icons-left">
+                      <input class="input form-control" type="password" id="password" name="password" placeholder="Password">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                          <div class="invalid-feedback">Opps! You have entered an invalid password.</div>
+                      </span>
+                    </p>
+                </div>
+                <div class="field login-page-form">
+                    <p class="form-group control has-icons-left">
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                      <p class="mt-5 mb-3 text-muted" align="center">&copy; 2020</p>
+                    </p>
+                </div>
+        </form>
+
+    </div>
+
+{% endblock %}

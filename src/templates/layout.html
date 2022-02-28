@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block title %}<title>Title</title> {% endblock%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+<style>
+
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    /* Fixed sidenav, full height */
+    .sidenav {
+      height: 50%;
+      width: 200px;
+      position: fixed;
+      z-index: 1;
+      /*top: 0;*/
+      left: 0;
+      *background-color: #343a40;*
+      overflow-x: hidden;
+      /*padding-top: 20px;*/
+    }
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a, .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #818181;
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+    .sidenav button{
+        border-style: double;
+        background-color: #343a40;
+    }
+    .sidenav a{
+        border-style: dashed;
+        background-color: #17a2b8; /*#3e2723*/
+        border: 5px solid #343a40;
+        width: 180px;
+        font-size: 15px;
+
+
+
+    }
+    .sidenav button a{
+        border-style: none;
+        background-color: #343a40;
+        border: none;
+        width: none;
+    }
+
+    /* On mouse-over */
+    .sidenav a:hover, .dropdown-btn:hover {
+      color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 200px; /* Same as the width of the sidenav */
+      font-size: 20px; /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    /* Add an active class to the active dropdown button */
+    .active {
+      background-color: #4e342e;
+      color: white;
+    }
+
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+      display: none;
+      /*background-color: #3e2723;*/
+      padding-left: 8px;
+    }
+
+    /* Optional: Style the caret down icon */
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+    }
+
+    /* Some media queries for responsiveness */
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+</style>
+<style>
+    .navbar .navbar-brand logo-image{
+        display: flex;
+        width: 66px;
+        height: 56px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: -6px;
+    }
+    .navbar-brand img {
+      height: 100%;
+      margin-right: 20px;
+    }
+    #img-logo{
+    height: 25px;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- Navbar -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav navbar-dark bg-dark">
+          <!-- SideNav slide-out button -->
+        <a class="navbar-brand" href="/">
+              <div class="logo-image">
+                    <img id="img-logo" src="static/assets/iconcar.jpg" class="img-fluid"/>
+              </div>
+        </a>
+
+        <a class="navbar-brand" href="/"><b>VEHICLE REGISTRATION SYSTEM</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01"
+                aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">About</span></a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link"><i class="fas fa-user" ></i> <span class="clearfix d-none d-sm-inline-block" >Logout</span></a>
+                </li>
+
+        </ul>
+    </nav>
+    <!-- /.Navbar -->
+
+<div class="sidenav">
+      <div class="container"><p><b>MENU</b></p></div>
+      <button class="dropdown-btn">Register
+         <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+          <a href="/login/register" class="list-group-item">Right Prop. Register</a>
+          <a href="#" class="list-group-item">Mortgage Register</a>
+          <a href="#" class="list-group-item">change owner</a>
+      </div>
+      <button class="dropdown-btn">Validations
+         <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+          <a href="#" class="list-group-item">Validate Process</a>
+          <a href="#" class="list-group-item">Edit process</a>
+          <a href="/search" class="list-group-item">Search</a>
+      </div>
+      <button class="dropdown-btn" data-toggle="collapse" data-parent="#MainMenu">Administrator
+        <i class="fa fa-caret-down"></i> <!--class="dropdown-btn"-->
+      </button>
+      <div class="dropdown-container"> <!--class="dropdown-container"-->
+        <a href="#" class="list-group-item">Create Users</a>
+        <a href="#" class="list-group-item">List of Users</a>
+        <a href="#" class="list-group-item">Insert Other</a>
+      </div>
+    <button class="dropdown-btn" data-parent="#MainMenu"><a href="/search">Search</a></button>
+    <button class="dropdown-btn" data-parent="#MainMenu"><a href="">Contact</a></button>
+</div>
+
+
+
+{% block content%}
+<div class="main">
+<!--  <h2>Sidebar Dropdown</h2>-->
+<!--  <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>-->
+<!--  <p>This sidebar is of full height (100%) and always shown.</p>-->
+<!--  <p>Some random text..</p>-->
+</div>
+
+
+{% endblock%}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        let provinces = [];
+        let districts = [];
+         $.ajax({
+                type: "GET",
+                url: "{{ url_for('provinces') }}",
+                success: function(data) {
+                    if(data){
+                        provinces = [];
+                        for(let i = 0; i < data.length; i++){
+                            provinces[i] = data[i];
+                            $("#select_province").empty();
+                            $("#select_province").append("<option selected>-- Province --</option>");
+                            for(let i = 0; i < data.length; i++){
+                                $("#select_province").append(`<option value=${data[i][0]}>${data[i][2]}</option>`);
+           }
+                        }
+                    }
+                    //console.log(provinces,data);
+                }
+         });
+         $.ajax({
+                type: "GET",
+                url: "{{ url_for('districts') }}",
+                success: function(data) {
+                    if(data){
+                        districts = [];
+                        for(let i = 0; i < data.length; i++){
+                            districts[i] = data[i];
+                            $("#select_district").empty();
+                            $("#select_district").append("<option selected>-- District --</option>");
+                            for(let i = 0; i < data.length; i++){
+                                $("#select_district").append(`<option value=${data[i][0]}>${data[i][1]}</option>`);
+           }
+                        }
+                    }
+                    //console.log(districts,data);
+                }
+         });
+
+         $("#select_province").on("change",function(){
+           let selected_province = $(this).val();
+           let pdistricts = districts.filter(function(d){
+                if(selected_province == d[2]){
+                    return d;
+                }
+           });
+
+           $("#select_district").empty();
+           $("#select_district").append("<option selected>-- District --</option>");
+           for(let i = 0; i < pdistricts.length; i++){
+                $("#select_district").append(`<option value=${pdistricts[i][0]}>${pdistricts[i][1]}</option>`);
+           }
+
+        });
+
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        let vBrands = [];
+        let models = [];
+         $.ajax({
+                type: "GET",
+                url: "{{ url_for('vehicle_brand') }}",
+                success: function(data) {
+                    if(data){
+                        vBrands = [];
+                        for(let i = 0; i < data.length; i++){
+                            vBrands[i] = data[i];
+                            $("#select_brand").empty();
+                            $("#select_brand").append("<option selected>-- Brands --</option>");
+                            for(let i = 0; i < data.length; i++){
+                                $("#select_brand").append(`<option value=${data[i][0]}>${data[i][1]}</option>`);
+           }
+                        }
+                    }
+                    //console.log(provinces,data);
+                }
+         });
+         $.ajax({
+                type: "GET",
+                url: "{{ url_for('model') }}",
+                success: function(data) {
+                    if(data){
+                        models = [];
+                        for(let i = 0; i < data.length; i++){
+                            models[i] = data[i];
+                            $("#select_model").empty();
+                            $("#select_model").append("<option selected>-- Models --</option>");
+                            for(let i = 0; i < data.length; i++){
+                                $("#select_model").append(`<option value=${data[i][0]}>${data[i][1]}</option>`);
+           }
+                        }
+                    }
+                    //console.log(districts,data);
+                }
+         });
+
+         $("#select_brand").on("change",function(){
+           let selected_brand = $(this).val();
+           let bmodels = models.filter(function(d){
+                if(selected_brand == d[2]){
+                    return d;
+                }
+           });
+
+           $("#select_model").empty();
+           $("#select_model").append("<option selected>-- Models --</option>");
+           for(let i = 0; i < bmodels.length; i++){
+                $("#select_model").append(`<option value=${bmodels[i][0]}>${bmodels[i][1]}</option>`);
+           }
+
+        });
+
+    })
+</script>
+
+<script>
+    /* Loop through all dropdown buttons in main menu to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      } else {
+      dropdownContent.style.display = "block";
+      }
+      });
+    }
+</script>
+
+<script>
+    $(document).ready(() => {
+	// SideNav Initialization
+       $(".button-collapse").sideNav();
+
+       new WOW().init();
+    })
+
+</script>
+</body>
+</html>

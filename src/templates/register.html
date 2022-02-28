@@ -1,0 +1,116 @@
+{%extends "bootstrap/base.html"%}
+
+
+<body>
+
+{% block content %}
+<div class="container">
+    <div>
+        <br>
+        <small id="emailHelp" class="form-text text-muted" style="display:inline">{{email}}` blogs</small>
+        <!--<h4 id="emailHelp" class="form-text text-muted" style="display:inline">{{email}}'blogs</h4>-->
+        <a class="btn btn-primary float-right" style="display:inline" href="/" >Log out</a>
+        <br>
+    </div>
+    <br>
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1>Album example</h1>
+                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                    creator,
+                    etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                </p>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                                 focusable="false"
+                                 role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#55595c"/>
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Create User</text>
+                            </svg>
+                            <div class="card-body">
+                                <p class="card-text">This is a wider area, with support text
+                                    for creating user, which can create blogs and post related to him
+
+                                    additionally. This is only for authorized user.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-secundary btn-outline-secondary" href="/login/register">Create User</a>
+                                        <!--<a type="button" class="btn btn-secondary" href="/create_tools/edit_user">Edit</a>-->
+                                        <a class="btn btn-info" href="/login/create_tools/list_user">View User</a>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                                 focusable="false"
+                                 role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#55595c"/>
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Create Blogs</text>
+                            </svg>
+                            <div class="card-body">
+                                <p class="card-text">This is a wider area, with support text
+                                    for creating blogs and posts related to each author's blog
+
+                                    additionally. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-secundary btn-outline-secondary" href="/login/create_tools/new_blog">Create Blog</a>
+                                        <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                                         <a class="btn btn-info" href="/login/create_tools/user_blogs" methods="GET">View Blogs</a>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                                 focusable="false"
+                                 role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#55595c"/>
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Search Blogs</text>
+                            </svg>
+                            <div class="card-body">
+                                <p class="card-text">This is a wider area, with support text
+                                    for creating blogs and posts related to each author's blog
+
+                                    additionally. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-secundary btn-outline-secondary" href="/login/create_tools/search_blogs">Search Blogs</a>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View post</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+{% endblock %}
+</body>

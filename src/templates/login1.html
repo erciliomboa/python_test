@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<style>
+		#cover {
+			background: url("static/assets/vehicle6.jpg") center center no-repeat;
+			background-size: cover;
+			height: 100%;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			position: relative;
+		}
+
+		#cover-caption {
+			width: 100%;
+			position: relative;
+			z-index: 1;
+		}
+		body{
+		   position: relative;
+		   height: 100vh;
+		   width: 100%;
+		   overflow:hidden;
+		}
+
+		.cover{
+			position:fixed;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			width: 100%;
+			background: rgba(0,0,0,0.2);
+			z-index: 100;
+		}
+
+		.cover.open{
+			display:flex;
+			animation: show-cover 0.5s;
+		}
+
+		@keyframes show-cover{
+		   0% {
+			 opacity:0;
+		   }
+		   100% {
+			 opacity:1;
+		   }
+		}
+
+		/* only used for background overlay not needed for centering */
+		form:before {
+			content: '';
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			background-color: rgba(0,0,0,0.3);
+			z-index: -1;
+			border-radius: 10px;
+		}
+	</style>
+
+
+</head>
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav navbar-dark bg-dark">
+      <!-- SideNav slide-out button -->
+         <a class="navbar-brand" href="/"><b>VEHICLE REGISTRATION SYSTEM</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01"
+            aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <ul class="nav navbar-nav nav-flex-icons ml-auto">
+			<li class="nav-item">
+			  <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">About</span></a>
+			</li>
+			  <li class="nav-item">
+			  <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+			</li>
+<!--			<li class="nav-item">-->
+<!--			  <a href="/login" id="button"  class="nav-link"><i class="fas fa-user" ></i> <span class="clearfix d-none d-sm-inline-block">Login</span></a>-->
+<!--			</li>-->
+
+      </ul>
+</nav>
+    <!-- /.Navbar -->
+<body>
+{% block content %}
+
+	<div id="cover">
+		<div id="cover-caption" class="popup">
+			<div class="container">
+				<div class="row text-white">
+					<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+<!--						<img src="user.png" alt="User">-->
+						<h1 class="display-4 py-2 text-truncate">Please Login</h1>
+						<div class="px-2">
+							<form action="/login" class="justify-content-center" method="POST">
+								<div class="form-group">
+									<label class="sr-only">username</label>
+									<input type="text" class="form-control fas fa-user" id="username" name="username" placeholder="Username">
+								</div>
+								<div class="form-group">
+									<label class="sr-only">Email</label>
+									<input type="password" class="form-control" id="password" name="password" placeholder="password">
+								</div>
+								<button type="submit" class="btn btn-success btn-lg">&nbsp;&nbsp;Login &nbsp;&nbsp;</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+<!--<script>-->
+<!--   function toggleLogin() {-->
+<!--       document.querySelector(".cover-caption").classList.toggle("open");-->
+<!--   }-->
+<!--</script>-->
+
+<script>
+	document.getElementById("button").addEventListener("click", function()){
+		document.querySelector(".popup").style.display="flex";
+	}
+</script>
+<!--<script>-->
+<!--// Get the modal-->
+<!--var modal = document.getElementById('id01');-->
+
+<!--// When the user clicks anywhere outside of the modal, close it-->
+<!--window.onclick = function(event) {-->
+<!--    if (event.target == modal) {-->
+<!--        modal.style.display = "none";-->
+<!--    }-->
+<!--}-->
+<!--</script>-->
+{% endblock %}
+</body>
+</html>
